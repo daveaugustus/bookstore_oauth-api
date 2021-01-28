@@ -1,6 +1,7 @@
 package db
 
 import (
+	"github.com/davetweetlive/bookstore_oauth-api/src/client/cassandra"
 	"github.com/davetweetlive/bookstore_oauth-api/src/domain/access_token"
 	"github.com/davetweetlive/bookstore_oauth-api/src/utils/errors"
 )
@@ -17,5 +18,10 @@ type dbRepository struct {
 }
 
 func (r dbRepository) GetById(id string) (*access_token.AccessToken, *errors.RestErr) {
+	// TODO: implement get access token from CassandraDB
+	_, err := cassandra.GetSession()
+	if err != nil {
+		panic(err)
+	}
 	return nil, errors.NewInternalServerError("Data base connection not implemented yet!")
 }
