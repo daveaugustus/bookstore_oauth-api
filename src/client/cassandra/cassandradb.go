@@ -15,7 +15,7 @@ import (
 
 func GetSession() (*gocql.Session, error) {
 	cluster := gocql.NewCluster("127.0.0.1")
-	cluster.Keyspace = "oauth2"
+	cluster.Keyspace = "oauth"
 	cluster.Consistency = gocql.Quorum
 	return cluster.CreateSession()
 }
