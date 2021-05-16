@@ -22,5 +22,5 @@ func GetNewAccessToken() AccessToken {
 func (at *AccessToken) IsExpired() bool {
 	now := time.Now().UTC()
 	expirationTime := time.Unix(at.Expires, 0)
-	return now.After(expirationTime)
+	return now.After(expirationTime) // basically means now which is `now := time.Now().UTC()` is after expireationTime has it crossed the expiration time
 }
