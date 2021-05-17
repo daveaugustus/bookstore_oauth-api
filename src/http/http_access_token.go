@@ -21,6 +21,12 @@ func NewHandler(service access_token.Service) AccessTokenHandler {
 	}
 }
 
-func (h *accessTokenHandler) GetById(c *gin.Context) {
-	c.JSON(http.StatusNotImplemented, "implement me")
+func (handler *accessTokenHandler) GetById(c *gin.Context) {
+	accessToken, err := handler.service.GetById(c.Param("access_token_id"))
+	if err != nil {
+		c.JSON(err.Status, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, accessToken)
 }
