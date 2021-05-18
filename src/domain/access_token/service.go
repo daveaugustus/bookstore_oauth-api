@@ -1,6 +1,7 @@
 package access_token
 
 import (
+	"log"
 	"strings"
 
 	"github.com/davetweetlive/bookstore_oauth-api/src/utils/errors"
@@ -31,6 +32,7 @@ func (s service) GetById(accessTokenId string) (*AccessToken, *errors.RestErr) {
 	}
 	accessToken, err := s.repository.GetById(accessTokenId)
 	if err != nil {
+		log.Println("error while getting the access token")
 		return nil, err
 	}
 	return accessToken, nil
